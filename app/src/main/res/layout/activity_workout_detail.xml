@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.WorkoutDetailActivity">
 
 
     <LinearLayout
@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/workout_detale_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -26,6 +27,7 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/workout_detale_image_view"
             android:layout_width="320dp"
             android:layout_height="240dp"
             android:layout_gravity="center"
@@ -56,6 +58,7 @@
                     android:text="@string/date_text" />
 
                 <TextView
+                    android:id="@+id/workout_detale_record_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -73,10 +76,11 @@
                     android:text="@string/repscount_text" />
 
                 <TextView
+                    android:id="@+id/workout_detale_record_reps_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
-                    android:text="123" />
+                    android:text="100" />
             </LinearLayout>
 
             <LinearLayout
@@ -90,10 +94,11 @@
                     android:text="@string/weight_text" />
 
                 <TextView
+                    android:id="@+id/workout_detale_record_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
-                    android:text="123" />
+                    android:text="120" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,6 +108,73 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weight_text"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:id="@+id/workout_detale_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/measure" />
+
+
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/workout_detale_weight_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="200"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/workout_detale_reps_count_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/repscount_text"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/workout_detale_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/svbtn_text" />
+        <TextView
+            android:id="@+id/workout_detale_description"
+            android:text="Описание"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

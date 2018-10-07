@@ -1,12 +1,14 @@
 package com.example.uef.septemberworkout.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Workout {
     private String title;
-    private int weight;
+    private int recordWeight;
     private int recordRepsCount;
-    private Date recordData;
+    private Date recordDate;
     private String description;
     private String imageUrl;
 
@@ -16,11 +18,11 @@ public class Workout {
     // Сложность
 
 
-    public Workout(String title, int weight, int recordRepsCount, Date recordData, String description, String imageUrl) {
+    public Workout(String title, String description, int recordWeight, Date recordDate, int recordRepsCount, String imageUrl) {
         this.title = title;
-        this.weight = weight;
+        this.recordWeight = recordWeight;
         this.recordRepsCount = recordRepsCount;
-        this.recordData = recordData;
+        this.recordDate = recordDate;
         this.description = description;
         this.imageUrl = imageUrl;
     }
@@ -28,6 +30,10 @@ public class Workout {
     public Workout(String title) {
 
         this.title = title;
+    }
+
+    public String getFormattedRecordDate() {
+        return new SimpleDateFormat("dd.MM.YYYY", Locale.ROOT).format(recordDate);
     }
 
     public String getTitle() {
@@ -38,12 +44,12 @@ public class Workout {
         this.title = title;
     }
 
-    public int getWeight() {
-        return weight;
+    public int getRecordWeight() {
+        return recordWeight;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setRecordWeight(int recordWeight) {
+        this.recordWeight = recordWeight;
     }
 
     public int getRecordRepsCount() {
@@ -54,12 +60,12 @@ public class Workout {
         this.recordRepsCount = recordRepsCount;
     }
 
-    public Date getRecordData() {
-        return recordData;
+    public Date getRecordDate() {
+        return recordDate;
     }
 
-    public void setRecordData(Date recordData) {
-        this.recordData = recordData;
+    public void setRecordDate(Date recordDate) {
+        this.recordDate = recordDate;
     }
 
     public String getDescription() {
