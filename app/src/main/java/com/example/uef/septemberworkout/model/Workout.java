@@ -41,46 +41,57 @@ public class Workout {
     }
 
     public void setTitle(String title) {
+
         this.title = title;
     }
 
     public int getRecordWeight() {
+
         return recordWeight;
     }
 
     public void setRecordWeight(int recordWeight) {
+
         this.recordWeight = recordWeight;
     }
 
     public int getRecordRepsCount() {
+
         return recordRepsCount;
     }
 
     public void setRecordRepsCount(int recordRepsCount) {
+
         this.recordRepsCount = recordRepsCount;
     }
 
     public Date getRecordDate() {
+
         return recordDate;
     }
 
     public void setRecordDate(Date recordDate) {
+
         this.recordDate = recordDate;
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public void setDescription(String description) {
+
         this.description = description;
     }
 
     public String getImageUrl() {
+
         return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
+
         this.imageUrl = imageUrl;
     }
 }
