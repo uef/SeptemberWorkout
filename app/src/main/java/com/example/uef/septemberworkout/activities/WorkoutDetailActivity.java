@@ -30,7 +30,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_detail);
-        Workout workout = new Workout("Подтягивания", "Подтягивания на перекладине", 0, new Date(), 0, "");
+        Workout workout = new Workout("Pull ups", "Pull ups on horizontal bar", 0, new Date(), 0, "");
         initGUI(workout);
         addListeners(workout);
 
@@ -40,15 +40,19 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         saveRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!weight.getText().toString().isEmpty())
-                    if (Integer.parseInt(String.valueOf(weight.getText())) > workout.getRecordWeight())
+                if (!weight.getText().toString().isEmpty()) {
+                    if (Integer.parseInt(String.valueOf(weight.getText())) > workout.getRecordWeight()) {
                         recordWeight.setText(weight.getText());
                         workout.setRecordWeight(Integer.parseInt(String.valueOf(weight.getText())));
+                    }
+                }
 
-                if (!repsCountEditText.getText().toString().isEmpty())
-                    if (Integer.parseInt(String.valueOf(repsCountEditText.getText())) > workout.getRecordRepsCount())
+                if (!repsCountEditText.getText().toString().isEmpty()) {
+                    if (Integer.parseInt(String.valueOf(repsCountEditText.getText())) > workout.getRecordRepsCount()) {
                         recordRepsCount.setText(repsCountEditText.getText());
                         workout.setRecordRepsCount(Integer.parseInt(String.valueOf(repsCountEditText.getText())));
+                    }
+                }
             }
         });
 
