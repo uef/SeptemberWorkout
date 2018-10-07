@@ -32,21 +32,23 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workout_detail);
         Workout workout = new Workout("Подтягивания", "Подтягивания на перекладине", 0, new Date(), 0, "");
         initGUI(workout);
-        addListeners();
+        addListeners(workout);
 
     }
 
-    private void addListeners() {
+    private void addListeners(final Workout workout) {
         saveRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!weight.getText().toString().isEmpty())
-                    if (Integer.parseInt(String.valueOf(weight.getText())) > Integer.parseInt(String.valueOf(recordWeight.getText())))
+                    if (Integer.parseInt(String.valueOf(weight.getText())) > workout.getRecordWeight())
                         recordWeight.setText(weight.getText());
+                        workout.setRecordWeight(Integer.parseInt(String.valueOf(weight.getText())));
 
                 if (!repsCountEditText.getText().toString().isEmpty())
-                    if (Integer.parseInt(String.valueOf(repsCountEditText.getText())) > Integer.parseInt(String.valueOf(recordRepsCount.getText())))
+                    if (Integer.parseInt(String.valueOf(repsCountEditText.getText())) > workout.getRecordRepsCount())
                         recordRepsCount.setText(repsCountEditText.getText());
+                        workout.setRecordRepsCount(Integer.parseInt(String.valueOf(repsCountEditText.getText())));
             }
         });
 
