@@ -2,6 +2,7 @@ package com.example.uef.septemberworkout.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,10 +33,23 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         Workout workout = new Workout("Подтягивания", "Подтягивания на перекладине", 0, new Date(), 0, "");
         initGUI(workout);
         addListeners();
-        
+
     }
 
     private void addListeners() {
+        saveRecordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!weight.getText().toString().isEmpty())
+                    if (Integer.parseInt(String.valueOf(weight.getText())) > Integer.parseInt(String.valueOf(recordWeight.getText())))
+                        recordWeight.setText(weight.getText());
+
+                if (!repsCountEditText.getText().toString().isEmpty())
+                    if (Integer.parseInt(String.valueOf(repsCountEditText.getText())) > Integer.parseInt(String.valueOf(recordRepsCount.getText())))
+                        recordRepsCount.setText(repsCountEditText.getText());
+            }
+        });
+
         weightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

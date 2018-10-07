@@ -61,8 +61,7 @@
                     android:id="@+id/workout_detale_record_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:text="12.12.2012" />
+                    android:layout_marginLeft="4dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -79,8 +78,7 @@
                     android:id="@+id/workout_detale_record_reps_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:text="100" />
+                    android:layout_marginLeft="4dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -97,8 +95,7 @@
                     android:id="@+id/workout_detale_record_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:text="120" />
+                    android:layout_marginLeft="4dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -132,8 +129,7 @@
                     android:layout_marginLeft="4dp"
                     android:id="@+id/workout_detale_weight"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     android:layout_marginLeft="4dp"
@@ -161,7 +157,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/repscount_text"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <Button

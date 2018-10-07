@@ -17,7 +17,6 @@ public class Workout {
     // Тип
     // Сложность
 
-
     public Workout(String title, String description, int recordWeight, Date recordDate, int recordRepsCount, String imageUrl) {
         this.title = title;
         this.recordWeight = recordWeight;
