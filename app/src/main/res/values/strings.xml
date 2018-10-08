@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">SeptemberWorkout</string>
-    <string name="date_text">Дата:</string>
-    <string name="repscount_text">Количество повторов:</string>
-    <string name="weight_text">Вес:</string>
-    <string name="measure">кг.</string>
-    <string name="records_txt">Рекорды</string>
-    <string name="workoutname_txt">Название упражнения</string>
-    <string name="svbtn_text">Сохранить</string>
+    <string name="date_text">Date:</string>
+    <string name="repscount_text">Repeat count:</string>
+    <string name="weight_text">Weight:</string>
+    <string name="measure">kg.</string>
+    <string name="records_txt">Records</string>
+    <string name="workoutname_txt">Exercises name</string>
+    <string name="svbtn_text">Save</string>
 </resources>

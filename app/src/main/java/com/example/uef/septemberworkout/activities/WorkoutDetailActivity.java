@@ -2,6 +2,7 @@ package com.example.uef.septemberworkout.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,13 +30,32 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_detail);
-        Workout workout = new Workout("Подтягивания", "Подтягивания на перекладине", 0, new Date(), 0, "");
+        Workout workout = new Workout("Pull ups", "Pull ups on horizontal bar", 0, new Date(), 0, "");
         initGUI(workout);
-        addListeners();
-        
+        addListeners(workout);
+
     }
 
-    private void addListeners() {
+    private void addListeners(final Workout workout) {
+        saveRecordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!weight.getText().toString().isEmpty()) {
+                    if (Integer.parseInt(String.valueOf(weight.getText())) > workout.getRecordWeight()) {
+                        recordWeight.setText(weight.getText());
+                        workout.setRecordWeight(Integer.parseInt(String.valueOf(weight.getText())));
+                    }
+                }
+
+                if (!repsCountEditText.getText().toString().isEmpty()) {
+                    if (Integer.parseInt(String.valueOf(repsCountEditText.getText())) > workout.getRecordRepsCount()) {
+                        recordRepsCount.setText(repsCountEditText.getText());
+                        workout.setRecordRepsCount(Integer.parseInt(String.valueOf(repsCountEditText.getText())));
+                    }
+                }
+            }
+        });
+
         weightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
