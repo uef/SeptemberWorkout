@@ -7,4 +7,7 @@
     <string name="records_txt">Рекорды</string>
     <string name="workoutname_txt">Название упражнения</string>
     <string name="svbtn_text">Сохранить</string>
+    <string name="squats_text">Приседания</string>
+    <string name="pull_ups_text">Подтягивания</string>
+    <string name="push_ups_text">Отжимания</string>
 </resources>
