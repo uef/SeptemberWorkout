@@ -7,4 +7,7 @@
     <string name="records_txt">Records</string>
     <string name="workoutname_txt">Exercises name</string>
     <string name="svbtn_text">Save</string>
+    <string name="pull_ups_text">Pull Ups</string>
+    <string name="push_ups_text">Push Ups</string>
+    <string name="squats_text">Squats</string>
 </resources>
