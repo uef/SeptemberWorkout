@@ -1,8 +1,9 @@
 package com.example.uef.septemberworkout.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,9 @@ import com.example.uef.septemberworkout.model.Workout;
 import java.util.Date;
 
 public class WorkoutDetailActivity extends AppCompatActivity {
+
+    private final String LOGTAG = "WorkoutDetailActivity";
+
     private TextView title;
     private TextView recordDate;
     private TextView recordRepsCount;
@@ -27,6 +31,42 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private EditText repsCountEditText;
     private Button saveRecordButton;
     private Button shareButton;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(LOGTAG, "onStart() ...");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LOGTAG, "onStop() ...");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LOGTAG,"onDestroy() ...");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(LOGTAG,"onPause() ...");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOGTAG,"onResume() ...");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(LOGTAG,"onRestart() ...");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
