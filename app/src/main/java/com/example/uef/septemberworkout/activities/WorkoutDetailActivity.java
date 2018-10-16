@@ -35,37 +35,37 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(LOGTAG, "onStart() ...");
+        Log.d(LOGTAG, LOGTAG + "onStart() ...");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(LOGTAG, "onStop() ...");
+        Log.d(LOGTAG, LOGTAG + "onStop() ...");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(LOGTAG,"onDestroy() ...");
+        Log.d(LOGTAG,LOGTAG + "onDestroy() ...");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(LOGTAG,"onPause() ...");
+        Log.d(LOGTAG,LOGTAG + "onPause() ...");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(LOGTAG,"onResume() ...");
+        Log.d(LOGTAG,LOGTAG + "onResume() ...");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(LOGTAG,"onRestart() ...");
+        Log.d(LOGTAG,LOGTAG + "onRestart() ...");
     }
 
     @Override
