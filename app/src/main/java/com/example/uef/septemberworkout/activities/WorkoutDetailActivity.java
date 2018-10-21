@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.uef.septemberworkout.R;
 import com.example.uef.septemberworkout.model.Workout;
@@ -47,25 +50,25 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(LOGTAG,LOGTAG + "onDestroy() ...");
+        Log.d(LOGTAG, LOGTAG + "onDestroy() ...");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(LOGTAG,LOGTAG + "onPause() ...");
+        Log.d(LOGTAG, LOGTAG + "onPause() ...");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(LOGTAG,LOGTAG + "onResume() ...");
+        Log.d(LOGTAG, LOGTAG + "onResume() ...");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(LOGTAG,LOGTAG + "onRestart() ...");
+        Log.d(LOGTAG, LOGTAG + "onRestart() ...");
     }
 
     @Override
@@ -76,6 +79,42 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         initGUI(workout);
         addListeners(workout);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.workout_detail_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_share:
+                shareRecord();
+                return true;
+            case R.id.action_settings:
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_quit:
+                Toast.makeText(this, "Quit", Toast.LENGTH_SHORT).show();
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void shareRecord() {
+        Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, R.string.intent_message);
+        sendIntent.setType("text/plain");
+
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(sendIntent);
+        }
     }
 
     private void addListeners(final Workout workout) {
@@ -118,23 +157,25 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                StringBuilder sb = new StringBuilder();
-                sb.append(workout.getTitle());
-                sb.append(";");
-                sb.append(workout.getFormattedRecordDate());
-                sb.append(";");
-                sb.append(workout.getRecordRepsCount());
-                sb.append(";");
-                sb.append(workout.getRecordWeight());
+                shareRecord();
 
-                sendIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-                sendIntent.setType("text/plain");
-
-                if (sendIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(sendIntent);
-                }
+//                Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+//                StringBuilder sb = new StringBuilder();
+//                sb.append(workout.getTitle());
+//                sb.append(";");
+//                sb.append(workout.getFormattedRecordDate());
+//                sb.append(";");
+//                sb.append(workout.getRecordRepsCount());
+//                sb.append(";");
+//                sb.append(workout.getRecordWeight());
+//
+//                sendIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
+//                sendIntent.setType("text/plain");
+//
+//                if (sendIntent.resolveActivity(getPackageManager()) != null) {
+//                    startActivity(sendIntent);
+//                }
             }
         });
     }

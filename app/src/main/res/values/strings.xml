@@ -12,4 +12,8 @@
     <string name="squats_text">Squats</string>
     <string name="share_text">Share</string>
     <string name="description_text">Description</string>
+    <string name="share">Share</string>
+    <string name="settings">Settings</string>
+    <string name="quit">Quit</string>
+    <string name="intent_message">Our Record!</string>
 </resources>

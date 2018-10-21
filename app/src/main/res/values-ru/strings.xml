@@ -12,4 +12,8 @@
     <string name="push_ups_text">Отжимания</string>
     <string name="share_text">Поделиться</string>
     <string name="description_text">Описание</string>
+    <string name="share">Поделиться</string>
+    <string name="settings">Настройки</string>
+    <string name="quit">Выдох</string>
+    <string name="intent_message">Наш Рекорд!</string>
 </resources>
