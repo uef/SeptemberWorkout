@@ -35,6 +35,15 @@ public class Workout {
         return new SimpleDateFormat("dd.MM.YYYY", Locale.ROOT).format(recordDate);
     }
 
+//    public byte[] setFormattedRecordDate(String recordDate)throws Exception{
+//        try {
+//            this.setRecordDate(new SimpleDateFormat("dd.MM.YYYY").parse(recordDate));
+//        }
+//        catch (Exception e){
+//            return null;
+//        }
+//    }
+
     public String getTitle() {
         return title;
     }
