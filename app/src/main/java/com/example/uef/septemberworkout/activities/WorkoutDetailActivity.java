@@ -154,30 +154,30 @@ public class WorkoutDetailActivity extends AppCompatActivity {
             }
         });
 
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                shareRecord();
-
-//                Intent sendIntent = new Intent();
-//                sendIntent.setAction(Intent.ACTION_SEND);
-//                StringBuilder sb = new StringBuilder();
-//                sb.append(workout.getTitle());
-//                sb.append(";");
-//                sb.append(workout.getFormattedRecordDate());
-//                sb.append(";");
-//                sb.append(workout.getRecordRepsCount());
-//                sb.append(";");
-//                sb.append(workout.getRecordWeight());
+//        shareButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                shareRecord();
 //
-//                sendIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-//                sendIntent.setType("text/plain");
-//
-//                if (sendIntent.resolveActivity(getPackageManager()) != null) {
-//                    startActivity(sendIntent);
-//                }
-            }
-        });
+////                Intent sendIntent = new Intent();
+////                sendIntent.setAction(Intent.ACTION_SEND);
+////                StringBuilder sb = new StringBuilder();
+////                sb.append(workout.getTitle());
+////                sb.append(";");
+////                sb.append(workout.getFormattedRecordDate());
+////                sb.append(";");
+////                sb.append(workout.getRecordRepsCount());
+////                sb.append(";");
+////                sb.append(workout.getRecordWeight());
+////
+////                sendIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
+////                sendIntent.setType("text/plain");
+////
+////                if (sendIntent.resolveActivity(getPackageManager()) != null) {
+////                    startActivity(sendIntent);
+////                }
+//            }
+//        });
     }
 
     private void initGUI(Workout workout) {
@@ -195,6 +195,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         weightSeekBar = findViewById(R.id.workout_detale_weight_seekbar);
         repsCountEditText = findViewById(R.id.workout_detale_reps_count_edittext);
         saveRecordButton = findViewById(R.id.workout_detale_save_button);
-        shareButton = findViewById(R.id.share_button);
+//        shareButton = findViewById(R.id.share_button);
     }
 }
