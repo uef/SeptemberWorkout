@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.uef.septemberworkout.R;
 import com.example.uef.septemberworkout.model.Workout;
+import com.example.uef.septemberworkout.model.WorkoutList;
+import com.example.uef.septemberworkout.utils.Constants;
 
 import java.util.Date;
 
@@ -35,8 +37,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private EditText repsCountEditText;
     private Button saveRecordButton;
     private Button shareButton;
-
-    private final Workout workout = new Workout("Pull ups", "Pull ups on horizontal bar", 0, new Date(), 0, "");
 
     @Override
     protected void onStart() {
@@ -74,35 +74,39 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         Log.d(LOGTAG, LOGTAG + "onRestart() ...");
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle saveInstanceState) {
-        super.onSaveInstanceState(saveInstanceState);
-        saveInstanceState.putInt("repscount", workout.getRecordRepsCount());
-        saveInstanceState.putInt("weight", workout.getRecordWeight());
-        saveInstanceState.putString("date", workout.getFormattedRecordDate());
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        workout.setRecordRepsCount(savedInstanceState.getInt("repscount"));
-        workout.setRecordWeight(savedInstanceState.getInt("weight"));
-//        workout.setFormattedRecordDate(savedInstanceState.getString("date"));
-//        this things for researching...
-
-
-        recordDate = findViewById(R.id.workout_detale_record_date);
-        recordDate.setText(workout.getFormattedRecordDate());
-        recordRepsCount = findViewById(R.id.workout_detale_record_reps_count);
-        recordRepsCount.setText(String.valueOf(workout.getRecordRepsCount()));
-        recordWeight = findViewById(R.id.workout_detale_record_weight);
-        recordWeight.setText(String.valueOf(workout.getRecordWeight()));
-    }
+//    @Override
+//    protected void onSaveInstanceState(Bundle saveInstanceState) {
+//        super.onSaveInstanceState(saveInstanceState);
+//        saveInstanceState.putInt("repscount", workout.getRecordRepsCount());
+//        saveInstanceState.putInt("weight", workout.getRecordWeight());
+//        saveInstanceState.putString("date", workout.getFormattedRecordDate());
+//    }
+//
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        workout.setRecordRepsCount(savedInstanceState.getInt("repscount"));
+//        workout.setRecordWeight(savedInstanceState.getInt("weight"));
+////        workout.setFormattedRecordDate(savedInstanceState.getString("date"));
+////        this things for researching...
+//
+//
+//        recordDate = findViewById(R.id.workout_detale_record_date);
+//        recordDate.setText(workout.getFormattedRecordDate());
+//        recordRepsCount = findViewById(R.id.workout_detale_record_reps_count);
+//        recordRepsCount.setText(String.valueOf(workout.getRecordRepsCount()));
+//        recordWeight = findViewById(R.id.workout_detale_record_weight);
+//        recordWeight.setText(String.valueOf(workout.getRecordWeight()));
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_detail);
+        Intent intent = getIntent();
+        int index = intent.getIntExtra(Constants.WORKOUT_INDEX,0);
+        Workout workout = WorkoutList.getInstance().getWorkouts().get(index);
+
         initGUI(workout);
         addListeners(workout);
     }
