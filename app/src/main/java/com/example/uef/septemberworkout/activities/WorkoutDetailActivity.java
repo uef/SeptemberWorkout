@@ -88,6 +88,8 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         workout.setRecordRepsCount(savedInstanceState.getInt("repscount"));
         workout.setRecordWeight(savedInstanceState.getInt("weight"));
 //        workout.setFormattedRecordDate(savedInstanceState.getString("date"));
+//        this things for researching...
+
 
         recordDate = findViewById(R.id.workout_detale_record_date);
         recordDate.setText(workout.getFormattedRecordDate());
