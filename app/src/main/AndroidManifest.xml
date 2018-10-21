@@ -9,11 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        <activity android:name=".activities.WorkoutDetailActivity">
-
-        </activity>
-        <activity android:name=".activities.WorkoutListlActivity">
+        <activity
+            android:name=".activities.WorkoutDetailActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activities.WorkoutListlActivity"></activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".activities.WorkoutListlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
