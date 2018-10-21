@@ -2,6 +2,7 @@ package com.example.uef.septemberworkout.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -34,6 +35,8 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private EditText repsCountEditText;
     private Button saveRecordButton;
     private Button shareButton;
+
+    private final Workout workout = new Workout("Pull ups", "Pull ups on horizontal bar", 0, new Date(), 0, "");
 
     @Override
     protected void onStart() {
@@ -72,13 +75,34 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+        saveInstanceState.putInt("repscount", workout.getRecordRepsCount());
+        saveInstanceState.putInt("weight", workout.getRecordWeight());
+        saveInstanceState.putString("date", workout.getFormattedRecordDate());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        workout.setRecordRepsCount(savedInstanceState.getInt("repscount"));
+        workout.setRecordWeight(savedInstanceState.getInt("weight"));
+//        workout.setFormattedRecordDate(savedInstanceState.getString("date"));
+
+        recordDate = findViewById(R.id.workout_detale_record_date);
+        recordDate.setText(workout.getFormattedRecordDate());
+        recordRepsCount = findViewById(R.id.workout_detale_record_reps_count);
+        recordRepsCount.setText(String.valueOf(workout.getRecordRepsCount()));
+        recordWeight = findViewById(R.id.workout_detale_record_weight);
+        recordWeight.setText(String.valueOf(workout.getRecordWeight()));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_detail);
-        Workout workout = new Workout("Pull ups", "Pull ups on horizontal bar", 0, new Date(), 0, "");
         initGUI(workout);
         addListeners(workout);
-
     }
 
     @Override
