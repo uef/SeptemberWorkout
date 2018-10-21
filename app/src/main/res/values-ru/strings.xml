@@ -16,4 +16,7 @@
     <string name="settings">Настройки</string>
     <string name="quit">Выдох</string>
     <string name="intent_message">Наш Рекорд!</string>
+    <string name="title_mock_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, vel.</string>
+    <string name="description_mock_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab adipisci asperiores error est eveniet expedita illo impedit ipsam laboriosam maiores modi necessitatibus optio, placeat possimus quas quod sunt voluptatibus.</string>
+
 </resources>
