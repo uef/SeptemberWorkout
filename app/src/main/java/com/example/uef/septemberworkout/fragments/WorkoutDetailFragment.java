@@ -44,7 +44,7 @@ public class WorkoutDetailFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_workout_detail, container, false);
+        View root = inflater.inflate(R.layout.fragment_workout_detail, container, false);
         Workout workout = WorkoutList.getInstance().getWorkouts().get(getArguments().getInt(WORKOUT_INDEX));
         initGUI(root, workout);
         addListeners(workout);

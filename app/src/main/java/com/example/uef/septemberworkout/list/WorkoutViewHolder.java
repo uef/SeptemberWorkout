@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.uef.septemberworkout.R;
@@ -13,6 +14,7 @@ import com.example.uef.septemberworkout.fragments.WorkoutDetailFragment;
 import com.example.uef.septemberworkout.interfaces.OnListItemClickListener;
 import com.example.uef.septemberworkout.model.Workout;
 import com.example.uef.septemberworkout.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 class WorkoutViewHolder extends RecyclerView.ViewHolder {
     private TextView title;
@@ -21,6 +23,7 @@ class WorkoutViewHolder extends RecyclerView.ViewHolder {
     private TextView recordRepsCount;
     private TextView recordWeigth;
     private CardView cardView;
+    private ImageView imageView;
 
     public WorkoutViewHolder(@NonNull final View itemView) {
         super(itemView);
@@ -30,7 +33,7 @@ class WorkoutViewHolder extends RecyclerView.ViewHolder {
         recordRepsCount = itemView.findViewById(R.id.list_item_record_reps_count);
         recordWeigth = itemView.findViewById(R.id.list_item_record_weight);
         cardView = itemView.findViewById(R.id.card_view);
-
+        imageView = itemView.findViewById(R.id.list_item_image_view);
     }
 
     public void bindView(Workout workout, final int index, final OnListItemClickListener listener) {
@@ -43,8 +46,10 @@ class WorkoutViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 listener.onLIstItemClickListener(index);
+
             }
         });
+        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(imageView);
     }
 }
 
