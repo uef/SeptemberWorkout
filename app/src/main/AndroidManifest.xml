@@ -10,17 +10,15 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.WorkoutDetailActivity"
-            android:parentActivityName=".activities.WorkoutListlActivity"></activity>
-        <activity
-            android:name=".activities.WorkoutListlActivity"
-            android:screenOrientation="portrait">
+            android:name=".fragments.WorkoutDetailFragment"
+            android:parentActivityName=".fragments.WorkoutListlFragment" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
+
 </manifest>

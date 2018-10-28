@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.uef.septemberworkout.R;
-import com.example.uef.septemberworkout.activities.WorkoutDetailActivity;
+import com.example.uef.septemberworkout.fragments.WorkoutDetailFragment;
+import com.example.uef.septemberworkout.interfaces.OnListItemClickListener;
 import com.example.uef.septemberworkout.model.Workout;
 import com.example.uef.septemberworkout.utils.Constants;
 
@@ -32,7 +33,7 @@ class WorkoutViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void bindView(Workout workout, final int index) {
+    public void bindView(Workout workout, final int index, final OnListItemClickListener listener) {
         title.setText(workout.getTitle());
         description.setText(workout.getDescription());
         recordWeigth.setText(String.valueOf(workout.getRecordWeight()));
@@ -41,10 +42,7 @@ class WorkoutViewHolder extends RecyclerView.ViewHolder {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = itemView.getContext();
-                Intent intent = new Intent(context, WorkoutDetailActivity.class);
-                intent.putExtra(Constants.WORKOUT_INDEX,index);
-                context.startActivity(intent);
+                listener.onLIstItemClickListener(index);
             }
         });
     }

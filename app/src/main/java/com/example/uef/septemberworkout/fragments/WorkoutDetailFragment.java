@@ -1,30 +1,26 @@
-package com.example.uef.septemberworkout.activities;
+package com.example.uef.septemberworkout.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.uef.septemberworkout.R;
 import com.example.uef.septemberworkout.model.Workout;
 import com.example.uef.septemberworkout.model.WorkoutList;
-import com.example.uef.septemberworkout.utils.Constants;
 
-import java.util.Date;
+public class WorkoutDetailFragment extends Fragment {
 
-public class WorkoutDetailActivity extends AppCompatActivity {
-
-    private final String LOGTAG = "WorkoutDetailActivity";
+//    private final String LOGTAG = "WorkoutDetailFragment";
 
     private TextView title;
     private TextView recordDate;
@@ -37,42 +33,60 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     private EditText repsCountEditText;
     private Button saveRecordButton;
     private Button shareButton;
+    private static final String WORKOUT_INDEX = "WorkoutIndex";
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(LOGTAG, LOGTAG + "onStart() ...");
+    public static WorkoutDetailFragment initFragment(int workoutIndex){
+        WorkoutDetailFragment fragment = new WorkoutDetailFragment();
+        Bundle arguments = new Bundle();
+        arguments.putInt(WORKOUT_INDEX, workoutIndex);
+        fragment.setArguments(arguments);
+        return fragment;
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(LOGTAG, LOGTAG + "onStop() ...");
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.activity_workout_detail, container, false);
+        Workout workout = WorkoutList.getInstance().getWorkouts().get(getArguments().getInt(WORKOUT_INDEX));
+        initGUI(root, workout);
+        addListeners(workout);
+
+        return root;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(LOGTAG, LOGTAG + "onDestroy() ...");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(LOGTAG, LOGTAG + "onPause() ...");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(LOGTAG, LOGTAG + "onResume() ...");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(LOGTAG, LOGTAG + "onRestart() ...");
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d(LOGTAG, LOGTAG + "onStart() ...");
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Log.d(LOGTAG, LOGTAG + "onStop() ...");
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        Log.d(LOGTAG, LOGTAG + "onDestroy() ...");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.d(LOGTAG, LOGTAG + "onPause() ...");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d(LOGTAG, LOGTAG + "onResume() ...");
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        Log.d(LOGTAG, LOGTAG + "onRestart() ...");
+//    }
 
 //    @Override
 //    protected void onSaveInstanceState(Bundle saveInstanceState) {
@@ -99,50 +113,38 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 //        recordWeight.setText(String.valueOf(workout.getRecordWeight()));
 //    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workout_detail);
-        Intent intent = getIntent();
-        int index = intent.getIntExtra(Constants.WORKOUT_INDEX,0);
-        Workout workout = WorkoutList.getInstance().getWorkouts().get(index);
-
-        initGUI(workout);
-        addListeners(workout);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.workout_detail_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_share:
-                shareRecord();
-                return true;
-            case R.id.action_settings:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_quit:
-                Toast.makeText(this, "Quit", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.workout_detail_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_share:
+//                shareRecord();
+//                return true;
+//            case R.id.action_settings:
+//                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.action_quit:
+//                Toast.makeText(this, "Quit", Toast.LENGTH_SHORT).show();
+//                onBackPressed();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     private void shareRecord() {
-        Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, R.string.intent_message);
         sendIntent.setType("text/plain");
 
-        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+        if (sendIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(sendIntent);
         }
     }
@@ -210,21 +212,21 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 //        });
     }
 
-    private void initGUI(Workout workout) {
-        title = findViewById(R.id.workout_detale_title);
+    private void initGUI(View view, Workout workout) {
+        title = view.findViewById(R.id.workout_detale_title);
         title.setText(workout.getTitle());
-        recordDate = findViewById(R.id.workout_detale_record_date);
+        recordDate = view.findViewById(R.id.workout_detale_record_date);
         recordDate.setText(workout.getFormattedRecordDate());
-        recordRepsCount = findViewById(R.id.workout_detale_record_reps_count);
+        recordRepsCount = view.findViewById(R.id.workout_detale_record_reps_count);
         recordRepsCount.setText(String.valueOf(workout.getRecordRepsCount()));
-        description = findViewById(R.id.workout_detale_description);
+        description = view.findViewById(R.id.workout_detale_description);
         description.setText(workout.getDescription());
-        recordWeight = findViewById(R.id.workout_detale_record_weight);
+        recordWeight = view.findViewById(R.id.workout_detale_record_weight);
         recordWeight.setText(String.valueOf(workout.getRecordWeight()));
-        weight = findViewById(R.id.workout_detale_weight);
-        weightSeekBar = findViewById(R.id.workout_detale_weight_seekbar);
-        repsCountEditText = findViewById(R.id.workout_detale_reps_count_edittext);
-        saveRecordButton = findViewById(R.id.workout_detale_save_button);
+        weight = view.findViewById(R.id.workout_detale_weight);
+        weightSeekBar = view.findViewById(R.id.workout_detale_weight_seekbar);
+        repsCountEditText = view.findViewById(R.id.workout_detale_reps_count_edittext);
+        saveRecordButton = view.findViewById(R.id.workout_detale_save_button);
 //        shareButton = findViewById(R.id.share_button);
     }
 }
